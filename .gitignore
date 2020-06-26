@@ -8,3 +8,4 @@ dist/
 
 # Firebase config
 firebase/config.js
+.firebase
