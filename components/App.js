@@ -47,6 +47,7 @@ const App = ({ info }) => {
         name="saltProportion"
         value={values.saltProportion}
         onChange={handleChange}
+        step={0.01}
       />
       <ControlledInput
         label="Target Weight, g."
