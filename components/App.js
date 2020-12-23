@@ -3,6 +3,8 @@ import ControlledInput from './ControlledInput';
 import { useState, useEffect, useRef } from 'preact/hooks';
 import countWeights from '../utils/countWeights';
 
+const gramsInTeaspoonSalt = 5.9;
+
 const App = ({ info }) => {
   const [values, setValues] = useState({
     starterHydration: 1,
@@ -20,6 +22,8 @@ const App = ({ info }) => {
   };
 
   const results = countWeights(values);
+  const saltGrams = Math.round(results.salt);
+  const saltTeaspoons = Math.round(results.salt / gramsInTeaspoonSalt * 100) / 100;
 
   return (
     <div>
@@ -59,7 +63,7 @@ const App = ({ info }) => {
       <h3>Results</h3>
       <div>Flour: {Math.round(results.flour)} g.</div>
       <div>Water: {Math.round(results.water)} g.</div>
-      <div>Salt: {Math.round(results.salt)} g.</div>
+      <div>Salt: {saltGrams} g. ({saltTeaspoons} tsp.)</div>
       <div>Starter: {Math.round(results.starter)} g.</div>
     </div>
   );
