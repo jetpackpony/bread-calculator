@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'preact/hooks';
 import countWeights from '../utils/countWeights';
 
 const gramsInTeaspoonSalt = 5.9;
+const gramsInTeaspoonYeast = 3.1;
 
 const App = ({ info }) => {
   const [values, setValues] = useState({
@@ -24,6 +25,8 @@ const App = ({ info }) => {
   const results = countWeights(values);
   const saltGrams = Math.round(results.salt);
   const saltTeaspoons = Math.round(results.salt / gramsInTeaspoonSalt * 100) / 100;
+  const yeastGrams = Math.round(results.yeast);
+  const yeastTeaspoons = Math.round(results.yeast / gramsInTeaspoonYeast * 100) / 100;
 
   return (
     <div>
@@ -64,6 +67,7 @@ const App = ({ info }) => {
       <h3>Results</h3>
       <div>Flour: {Math.round(results.flour)} g.</div>
       <div>Water: {Math.round(results.water)} g.</div>
+      <div>Yeast: {yeastGrams} g. ({yeastTeaspoons} tsp.)</div>
       <div>Salt: {saltGrams} g. ({saltTeaspoons} tsp.)</div>
       <div>Starter: {Math.round(results.starter)} g.</div>
     </div>

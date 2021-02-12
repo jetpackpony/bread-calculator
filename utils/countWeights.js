@@ -12,12 +12,15 @@ function countWeights({
   const waterProportion = targetHydration - starterProportion * waterInStarter;
   const totalPercent = flourProportion + waterProportion + starterProportion + saltProportion;
   
-  return {
+  const res = {
     flour: flourProportion / totalPercent * targetWeight,
     water: waterProportion / totalPercent * targetWeight,
     starter: starterProportion / totalPercent * targetWeight,
     salt: saltProportion / totalPercent * targetWeight
   };
+  res['yeast'] = res.flour / 1000 * 11;
+
+  return res;
 }
 
 export default countWeights;
